@@ -9,7 +9,9 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>This about page is for anyone to read!</p>
+        <h5>Project KAIN is a community building app for people who live nomadic lifestyles.</h5>
+        <p>KAIN was built to make life easier for the beautiful people at Average Wanderers: 
+          allowing them to stay safe and connected with their community while on the road.</p>
       </div>
     </div>
   );

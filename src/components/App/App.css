@@ -14,6 +14,12 @@ img {
   max-width: 100%;
 }
 
+/* Photo by <a href="https://unsplash.com/@rmilrad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+Ryan Milrad</a> on 
+<a href="https://unsplash.com/s/photos/snowmass?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+Unsplash</a>
+   */
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
@@ -29,10 +35,10 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #000d00;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #485d4e;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -55,7 +61,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #203326;
   text-decoration: none;
 }
 
@@ -72,8 +78,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #203326;
+  color: #485d4e;
 }
 
 /* --------------------------------------------------------------------------------
