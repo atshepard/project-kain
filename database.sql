@@ -51,7 +51,7 @@ CREATE TABLE "friends" (
 	"user_2_id" int REFERENCES "user");
 
 
-    -- TEST QUERIES: 
+-- TEST QUERIES: 
 
 SELECT * from "user" 
 WHERE "id" = 1;
