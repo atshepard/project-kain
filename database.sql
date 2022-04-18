@@ -50,3 +50,17 @@ CREATE TABLE "friends" (
 	"user_1_id" int REFERENCES "user",
 	"user_2_id" int REFERENCES "user");
 
+
+    -- TEST QUERIES: 
+
+SELECT * from "user" 
+WHERE "id" = 1;
+
+SELECT "location_name", "start_date", "end_date", "user".display_name, "user".profile_image from "trip" 
+JOIN "user_trip" ON "user_trip".trip_id = "trip".id
+JOIN "user" ON "user_trip".user_id = "user".id;
+
+INSERT INTO "trip" ("location_name", "latitude", "longitude", "start_date", "end_date")
+VALUES ('');
+
+
