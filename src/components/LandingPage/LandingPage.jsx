@@ -20,20 +20,19 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. 
+            Welcome to Project Kain, a community building app 
+            for nomads to share wisdom while on the road. 
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. 
+            Register to connect with other nomads, manage your trips, and see 
+            what advice has been left behind.  
           </p>
 
           <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. 
+            To learn more about nomadic life, visit the Average Wanderers.  
           </p>
+          {/* Future link to public map if available */}
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />

@@ -1,14 +1,27 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+  const dispatch = useDispatch();
+
+  //on page load, render the trips for this specific user: 
+  useEffect(() => {
+    console.log('in use effect');
+    dispatch({type: 'FETCH_TRIPS'});
+  });
+  
   const user = useSelector((store) => store.user);
+  const trips = useSelector((store => store.tripReducer));
+  //need a trips reducer here
+
+
   return (
     <div className="container">
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <h2>Welcome, {user.display_name}!</h2>
+      <p>A list of your trips will render here:</p>
+      {/* trips.map to generate Trip component */}
       <LogOutButton className="btn" />
     </div>
   );
