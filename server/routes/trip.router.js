@@ -8,7 +8,7 @@ const router = express.Router();
 //gets all trip data for the logged in user: 
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
-                  SELECT "location_name", "latitude", "longitude", 
+                  SELECT "id", "location_name", "latitude", "longitude", 
                   "start_date", "end_date" from "trip"
                   JOIN "user_trip" on "user_trip".trip_id = "trip".id
                   WHERE "user_trip".user_id = $1;`
