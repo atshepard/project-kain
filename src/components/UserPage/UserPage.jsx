@@ -14,8 +14,6 @@ function UserPage() {
   
   const user = useSelector((store) => store.user);
   const trips = useSelector((store => store.tripReducer));
-  //need a trips reducer here
-
 
   return (
     <div className="container">

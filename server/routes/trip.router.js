@@ -8,9 +8,10 @@ const router = express.Router();
 //gets all trip data for the logged in user: 
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
- SELECT "user".display_name, "user".profile_image, * from "trip" 
- JOIN "user_trip" ON "user_trip".trip_id = "trip".id
- JOIN "user" ON "user_trip".user_id = $1;`
+                  SELECT "location_name", "latitude", "longitude", 
+                  "start_date", "end_date" from "trip"
+                  JOIN "user_trip" on "user_trip".trip_id = "trip".id
+                  WHERE "user_trip".user_id = $1;`
 
   pool.query(queryText, [req.user.id])
     .then(result => {
