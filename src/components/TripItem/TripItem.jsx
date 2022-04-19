@@ -1,15 +1,12 @@
 import {Card, CardActionArea, CardContent, CardHeader} from '@mui/material';
 import {useHistory} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
 
 function TripItem ({trip}) {
     const history = useHistory();
-    const dispatch = useDispatch();
 
     const tripDetails = () => {
         console.log(trip.id);
-        // history.push('/details');
-        // dispatch({type: 'FETCH_ALL_TRIP_DETAILS', payload: trip.id});
+        history.push(`/trip/${trip.id}`);
     }
 
     return(<>
@@ -17,7 +14,7 @@ function TripItem ({trip}) {
         <CardActionArea
         onClick={tripDetails}
         >
-            <CardHeader>{trip.location_name}</CardHeader>
+            <CardHeader title={trip.location_name} />
 
             <CardContent>
             <p>{trip.latitude}, {trip.longitude}</p>  
