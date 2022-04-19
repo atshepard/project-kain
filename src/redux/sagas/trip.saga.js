@@ -14,8 +14,8 @@ function* fetchTrips() {
 function* fetchTripDetails (action) {
   try {
     console.log('fetching trip deets')
-    //const response = yield axios.get(`/api/trip/${action.payload}`);
-    // yield put({type: 'SET_DETAILS', payload: response.data});
+    const response = yield axios.get(`/api/trip/${action.payload}`);
+    yield put({type: 'SET_DETAILS', payload: response.data});
   } catch (error) {
     console.log('Trip details get request failed: ', error);
   }

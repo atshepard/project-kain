@@ -1,14 +1,42 @@
-import React from 'react';
-
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
+import React, { useState } from 'react';
+import { Button, FormControl, Input } from '@mui/material';
 
 function AddTrip() {
+
+  const handleClick = () => {
+    console.log('clicked the ADD TRIP button!');
+  }
+
   return (
     <div className="container">
-      <p>Info Page</p>
+      <FormControl>
+        <Input
+          type="text"
+          placeholder="Location Name"
+        ></Input>
+
+        <Input
+          type="text"
+          placeholder="Latitude"
+        ></Input>
+
+        <Input
+          type="text"
+          placeholder="Longitude"
+        ></Input>
+
+        <Input
+          type="date"
+          placeholder="Start Date"
+        ></Input>
+
+        <Input
+          type="date"
+          placeholder="End Date"
+        ></Input>
+
+        <Button onClick={handleClick}>ADD TRIP</Button>
+      </FormControl>
     </div>
   );
 }

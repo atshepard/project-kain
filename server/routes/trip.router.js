@@ -24,23 +24,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 //gets all data for a specific trip:
-router.get('/:id', (req, res) => {
-  // const queryText = `
-  // SELECT "user".display_name, "user".profile_image, * from "trip"
-  // JOIN "user_trip" ON "user_trip".trip_id = "trip".id
-  // JOIN "user" ON "user_trip".user_id = $1
-  // WHERE "trip".id = $2;`;
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+  SELECT * from "trip"
+  WHERE "trip".id = $1;`;
 
-  // const queryValues = [req.user.id, req.params.id];
-
-  // pool.query(queryText, queryValues)
-  // .then(result => {
-  //   res.send(result.rows);
-  // })
-  // .catch(error => {
-  //   console.log('error in single trip get: ', error);
-  //   res.sendStatus(500);
-  // })
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(error => {
+    console.log('error in single trip get: ', error);
+    res.sendStatus(500);
+  })
 });
 
 //cruft for get route:
