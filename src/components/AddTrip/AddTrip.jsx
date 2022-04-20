@@ -23,7 +23,7 @@ function AddTrip() {
   }
 
   const handleClick = () => {
-    console.log(state);
+    // console.log(state)
     swal({
       title: "Is this correct?",
       text: `Your trip to: ${state.locationName} from ${state.startDate} to ${state.endDate}?`,
