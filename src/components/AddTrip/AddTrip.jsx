@@ -13,17 +13,20 @@ function AddTrip() {
 
   const handleChange = (event) => {
     let value = event.target.value;
-    setState({[event.target.name] : value})
+    setState({
+      ...state,
+      [event.target.name] : value})
   }
 
   const handleClick = () => {
-    console.log('clicked the ADD TRIP button!');
+    console.log('clicked the ADD TRIP button!', state);
   }
 
   return (
     <div className="container">
         <Input
           type="text"
+          name="locationName"
           value={state.locationName}
           onChange={handleChange}
           placeholder="Location Name"
@@ -31,6 +34,7 @@ function AddTrip() {
 
         <Input
           type="text"
+          name="latitude"
           placeholder="Latitude"
           value={state.latitude}
           onChange={handleChange}
@@ -38,6 +42,7 @@ function AddTrip() {
 
         <Input
           type="text"
+          name="longitude"
           placeholder="Longitude"
           value={state.longitude}
           onChange={handleChange}
@@ -45,6 +50,7 @@ function AddTrip() {
 
         <Input
           type="date"
+          name="startDate"
           placeholder="Start Date"
           value={state.startDate}
           onChange={handleChange}
@@ -52,6 +58,7 @@ function AddTrip() {
 
         <Input
           type="date"
+          name="endDate"
           placeholder="End Date"
           value={state.endDate}
           onChange={handleChange}

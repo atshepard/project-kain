@@ -7,7 +7,7 @@ import moment from "moment";
 function TripDetails () {
     let trip = useParams();
     const dispatch = useDispatch();
-    const details = useSelector((store) => store.detailsReducer[0]);
+    const details = useSelector((store) => store.detailsReducer);
 
     useEffect(() => {
         dispatch({type: 'FETCH_TRIP_DETAILS', payload: trip.id});
@@ -16,6 +16,7 @@ function TripDetails () {
     const startDate = moment(details.start_date).format("MMM Do YY");
     const endDate = moment(details.end_date).format("MMM Do YY");
 
+    // console.log('LOGGING THE DETAILS', details)
     return(<>
 
     <h1>Your trip to {details.location_name}</h1>
