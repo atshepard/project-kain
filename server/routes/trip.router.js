@@ -57,8 +57,43 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 
 
 //posts a new trip
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/', rejectUnauthenticated, (req, res) => {
+ 
+  let trip = req.body.state
+  // console.log(trip);
+
+  const queryText = `
+  INSERT INTO "trip" 
+  ("location_name", "latitude", "longitude", "start_date", "end_date")
+  VALUES ($1, $2, $3, $4, $5)
+  returning "id";`;
+
+  const queryValues = 
+  [trip.locationName, trip.latitude, 
+    trip.longitude, trip.startDate, trip.endDate]
+
+  pool.query(queryText, queryValues)
+  .then(result => {
+          const newTripID = result.rows[0].id
+
+          const queryText = 
+          `INSERT INTO "user_trip" ("user_id", "trip_id")
+          VALUES ($1, $2);`;
+
+          pool.query(queryText, [req.user.id, newTripID])
+          .then(result => {
+            res.sendStatus(201);
+          })
+          .catch(error => {
+            console.log('error in user trip post: ', error);
+            res.sendStatus(500);
+          })
+  })
+  .catch(error => {
+    console.log('error in  trip post: ', error);
+    res.sendStatus(500);
+  })
+
 });
 
 module.exports = router;

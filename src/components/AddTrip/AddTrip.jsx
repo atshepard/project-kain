@@ -23,6 +23,7 @@ function AddTrip() {
   }
 
   const handleClick = () => {
+    console.log(state);
     swal({
       title: "Is this correct?",
       text: `Your trip to: ${state.locationName} from ${state.startDate} to ${state.endDate}?`,
@@ -53,6 +54,7 @@ function AddTrip() {
         swal("Your trip has not been saved.");
       }
     });
+
   }
 
   return (
