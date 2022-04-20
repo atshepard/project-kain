@@ -14,7 +14,7 @@ function UserPage() {
   }, []);
   
   const user = useSelector((store) => store.user);
-  const trips = useSelector((store) => store.tripReducer);
+  const trips = useSelector((store) => store.tripsReducer);
 
   // const handleClick = () => {
   //   console.log('console logging trips array: ', trips);

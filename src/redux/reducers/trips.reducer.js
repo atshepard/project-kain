@@ -1,4 +1,4 @@
-const tripReducer = (state = [], action) => {
+const tripsReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_TRIPS':
       return action.payload;
@@ -9,4 +9,4 @@ const tripReducer = (state = [], action) => {
 
 // trip will be on the redux state at:
 // state.trip
-export default tripReducer;
+export default tripsReducer;
