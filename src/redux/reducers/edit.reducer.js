@@ -1,4 +1,4 @@
-const editTrip = (state  = {}, action) => {
+const editTripReducer = (state  = {}, action) => {
     if(action.type == 'SET_EDIT_TRIP') {
         return action.payload;
     } else if (action.type == 'EDIT_ONCHANGE') {
