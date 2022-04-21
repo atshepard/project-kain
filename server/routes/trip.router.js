@@ -11,7 +11,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                   SELECT "trip".id, "location_name", "latitude", "longitude", 
                   "start_date", "end_date" from "trip"
                   JOIN "user_trip" on "user_trip".trip_id = "trip".id
-                  WHERE "user_trip".user_id = $1;`
+                  WHERE "user_trip".user_id = $1
+                  ORDER BY "start_date" DESC;`
 
   pool.query(queryText, [req.user.id])
     .then(result => {
@@ -39,6 +40,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
+//updates a specific trip:
 router.put('/:id', rejectUnauthenticated, (req, res) => {
 
   const queryText = `
@@ -60,22 +62,10 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
-//cruft for get route:
-// router.get('/pins/:id', (req, res) => {
-//   const queryText = ``;
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
-//   const queryValues = [req.user.id, req.params.id];
-
-//   pool.query(queryText, queryValues)
-//   .then(result => {
-//     res.send(result.rows);
-//   })
-//   .catch(error => {
-//     console.log('error in single trip get: ', error);
-//     res.sendStatus(500);
-//   })
-// });
-
+  
+})
 
 //posts a new trip
 router.post('/', rejectUnauthenticated, (req, res) => {
