@@ -19,7 +19,8 @@ function TripItem({ trip }) {
 
     const handleEdit = () => {
     // console.log('you clicked the edit button for trip: ', trip.id);
-
+        dispatch({type: 'SET_EDIT_TRIP', payload: trip});
+        //history.push(`/edit/${trip.id}`)
     }
 
     const handleDelete = () => {
