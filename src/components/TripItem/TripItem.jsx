@@ -4,6 +4,7 @@ import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import swal from 'sweetalert';
+import axios from 'axios';
 
 function TripItem({ trip }) {
     const history = useHistory();
@@ -38,7 +39,14 @@ function TripItem({ trip }) {
             icon: "success",
           });
 
-        dispatch({type: 'DELETE_TRIP', payload: trip.id});
+          axios.delete(`/api/trip/${trip.id}`)
+          .then(response => {
+              console.log(response)
+              history.push('/user')
+          })
+          .catch(error => {
+              console.log('error deleting trip, ', trip.id, error)
+          })
 
         } else {
           swal("Your trip details are safe!");
