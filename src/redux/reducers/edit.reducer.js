@@ -8,6 +8,8 @@ const editTripReducer = (state  = {}, action) => {
             //update the property sent with the value sent
            [action.payload.property] : action.payload.value
         }
+    } else if (action.type == 'EDIT_CLEAR') {
+        return {};
     }
     return state;
 }
