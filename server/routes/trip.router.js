@@ -63,7 +63,16 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `DELETE FROM "trip" WHERE "id" = $1`
 
+  pool.query(queryText, [req.params.id])
+  .then(result => {
+    res.sendStatus(200);
+  })
+  .catch(error => {
+    console.log('error in single trip get: ', error);
+    res.sendStatus(500);
+  })
   
 })
 

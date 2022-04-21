@@ -5,12 +5,12 @@ import moment from "moment";
 
 
 function TripDetails () {
-    let trip = useParams();
+    let id = useParams();
     const dispatch = useDispatch();
     const details = useSelector((store) => store.detailsReducer);
 
     useEffect(() => {
-        dispatch({type: 'FETCH_TRIP_DETAILS', payload: trip.id});
+        dispatch({type: 'FETCH_TRIP_DETAILS', payload: id});
     }, []);
 
     const startDate = moment(details.start_date).format("MMM Do YY");
