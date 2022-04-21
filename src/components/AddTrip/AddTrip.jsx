@@ -15,6 +15,7 @@ function AddTrip() {
     endDate: ''
   })
 
+ 
   const handleChange = (event) => {
     let value = event.target.value;
     setState({

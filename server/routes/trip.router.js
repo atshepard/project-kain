@@ -41,9 +41,10 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 //gets media for a specific trip
-router.get('media/:id', rejectUnauthenticated, (req, res) => {
+router.get('/media/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
-  SELECT * from "trip"
+  SELECT "media".id, "media".link, "media".media_type FROM "media"
+  JOIN "trip" ON "media".trip_id = "trip".id
   WHERE "trip".id = $1;`;
 
   pool.query(queryText, [req.params.id])
@@ -51,7 +52,7 @@ router.get('media/:id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch(error => {
-      console.log('error in single trip get: ', error);
+      console.log('error in media trip get: ', error);
       res.sendStatus(500);
     })
 });
@@ -82,14 +83,14 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `DELETE FROM "trip" WHERE "id" = $1`
 
   pool.query(queryText, [req.params.id])
-  .then(result => {
-    res.sendStatus(200);
-  })
-  .catch(error => {
-    console.log('error in single trip get: ', error);
-    res.sendStatus(500);
-  })
-  
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch(error => {
+      console.log('error in single trip get: ', error);
+      res.sendStatus(500);
+    })
+
 })
 
 //posts a new trip
