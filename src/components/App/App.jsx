@@ -16,6 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import AddTrip from '../AddTrip/AddTrip';
+import EditTripForm from '../EditTripForm/EditTripForm';
 import TripDetails from '../TripDetails/TripDetails';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -72,6 +73,13 @@ function App() {
             path="/trip/:id"
           >
             <TripDetails />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/edit/:id"
+          >
+            <EditTripForm />
           </ProtectedRoute>
 
           <Route
