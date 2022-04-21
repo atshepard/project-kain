@@ -22,9 +22,19 @@ function* fetchTripDetails (action) {
   }
 }
 
+function* fetchMedia (action) {
+  try {
+    const response = yield axios.get(`/api/trip/media/${action.payload}`);
+    yield put({type: 'SET_MEDIA', payload: response.data});
+  } catch (error) {
+    console.log('Media get request failed: ', error);
+  }
+}
+
 function* tripSaga() {
   yield takeLatest('FETCH_TRIPS', fetchTrips);
   yield takeLatest('FETCH_TRIP_DETAILS', fetchTripDetails);
+  yield takeLatest('FETCH_TRIP_MEDIA', fetchMedia);
 }
 
 export default tripSaga;

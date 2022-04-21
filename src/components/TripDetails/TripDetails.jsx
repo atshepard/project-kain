@@ -11,6 +11,7 @@ function TripDetails () {
 
     useEffect(() => {
         dispatch({type: 'FETCH_TRIP_DETAILS', payload: id});
+        dispatch({type: 'FETCH_TRIP_MEDIA', payload: id});
     }, []);
 
     const startDate = moment(details.start_date).format("MMM Do YY");

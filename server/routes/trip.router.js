@@ -40,6 +40,22 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
+//gets media for a specific trip
+router.get('media/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+  SELECT * from "trip"
+  WHERE "trip".id = $1;`;
+
+  pool.query(queryText, [req.params.id])
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('error in single trip get: ', error);
+      res.sendStatus(500);
+    })
+});
+
 //updates a specific trip:
 router.put('/:id', rejectUnauthenticated, (req, res) => {
 
