@@ -22,9 +22,29 @@ function* fetchTripDetails (action) {
   }
 }
 
+function* fetchMedia (action) {
+  try {
+    const response = yield axios.get(`/api/trip/media/${action.payload}`);
+    yield put({type: 'SET_MEDIA', payload: response.data});
+  } catch (error) {
+    console.log('Media get request failed: ', error);
+  }
+}
+
+function* fetchPins (action) {
+  try {
+    const response = yield axios.get(`/api/trip/pins/${action.payload}`);
+    yield put({type: 'SET_PINS', payload: response.data});
+  } catch (error) {
+    console.log('Pins get request failed: ', error);
+  }
+}
+
 function* tripSaga() {
   yield takeLatest('FETCH_TRIPS', fetchTrips);
   yield takeLatest('FETCH_TRIP_DETAILS', fetchTripDetails);
+  yield takeLatest('FETCH_TRIP_MEDIA', fetchMedia);
+  yield takeLatest('FETCH_TRIP_PINS', fetchPins);
 }
 
 export default tripSaga;

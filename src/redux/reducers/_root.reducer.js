@@ -4,6 +4,8 @@ import user from './user.reducer';
 import tripsReducer from './trips.reducer';
 import detailsReducer from './details.reducer';
 import editTripReducer from './edit.reducer';
+import mediaReducer from './media.reducer';
+import pinReducer from './pins.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +18,9 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   tripsReducer, 
   detailsReducer, 
-  editTripReducer
+  editTripReducer, 
+  mediaReducer, 
+  pinReducer
 });
 
 export default rootReducer;

@@ -20,11 +20,11 @@ function EditTripForm() {
   
     // Called when the submit button is pressed
     function handleClick() {
+
     swal({
         title: "Does this look correct?",
         text: 
-        `Your trip to ${editTrip.location_name} 
-        from ${moment(editTrip.start_date).format('YYYY-MM-DD')} to ${moment(editTrip.end_date).format('YYYY-MM-DD')}`,
+        `Your trip to ${editTrip.location_name} from ${moment(editTrip.start_date).format('YYYY-MM-DD')} to ${moment(editTrip.end_date).format('YYYY-MM-DD')}`,
         icon: "warning",
         buttons: true,
         dangerMode: true,
