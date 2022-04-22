@@ -57,6 +57,23 @@ router.get('/media/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
+//gets pins for a specific trip
+router.get('/pins/:id', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+  SELECT "pin".id, "pin".pin_name, "pin".pin_desc, "pin".latitude, "pin".longitude FROM "pin"
+  JOIN "trip" ON "pin".trip_id = "trip".id
+  WHERE "trip".id = $1;`;
+
+  pool.query(queryText, [req.params.id])
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(error => {
+      console.log('error in pin trip get: ', error);
+      res.sendStatus(500);
+    })
+});
+
 //updates a specific trip:
 router.put('/:id', rejectUnauthenticated, (req, res) => {
 
