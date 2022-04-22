@@ -5,7 +5,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 function TripMap({details, pins}) {
 
     const containerStyle = {
-        width: '400px',
+        width: '800px',
         height: '400px'
       };
       
@@ -25,7 +25,7 @@ function TripMap({details, pins}) {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10}
+          zoom={8}
         >
           { /* Child components, such as markers, info windows, etc. */ }
           {pins &&  pins.map((pin, i) => {
@@ -33,6 +33,7 @@ function TripMap({details, pins}) {
                 return(
                 <Marker 
                 onLoad={onLoad}
+                label={pin.pin_name}
                 position={{lat: Number(pin.latitude), lng: Number(pin.longitude)}}
                 />)
             })}
