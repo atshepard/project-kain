@@ -22,7 +22,7 @@ function TripDetails() {
     const endDate = moment(details.end_date).format("MMM Do YY");
 
     // console.log('LOGGING THE DETAILS', details)
-    console.log('logging pins', pins)
+    // console.log('logging pins', pins)
     return (<>
 
         <h1>Your trip to {details.location_name}</h1>
