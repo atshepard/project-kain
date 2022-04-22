@@ -70,7 +70,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            exact path="/friends"
+            exact path="/friend"
           >
             <FriendList />
           </ProtectedRoute>

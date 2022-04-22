@@ -32,7 +32,7 @@ function Nav() {
               Add Trip
             </Link>
 
-            <Link className="navLink" to="/friends">
+            <Link className="navLink" to="/friend">
               Friends List
             </Link>
 
