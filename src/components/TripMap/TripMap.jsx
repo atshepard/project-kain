@@ -28,7 +28,7 @@ function TripMap({details, pins}) {
           zoom={10}
         >
           { /* Child components, such as markers, info windows, etc. */ }
-            {pins.map((pin, i) => {
+          {pins &&  pins.map((pin, i) => {
 
                 return(
                 <Marker 
