@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { ImageList, ImageListItem } from "@mui/material";
+import TripMap from '../TripMap/TripMap';
 import { useEffect } from "react";
 import moment from "moment";
 
@@ -28,6 +29,11 @@ function TripDetails() {
         <h1>Your trip to {details.location_name}</h1>
         <br />
         <h3>From {startDate} to {endDate}</h3>
+        <br />
+        <TripMap
+        details={details}
+        pins={pins}
+        />
         <br />
         {pins.map((pin) => {
             return(<p key={pin.id}>{pin.pin_name}, {pin.pin_desc}, {pin.latitude}, {pin.longitude}</p>)

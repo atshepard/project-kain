@@ -18,6 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import AddTrip from '../AddTrip/AddTrip';
 import EditTripForm from '../EditTripForm/EditTripForm';
 import TripDetails from '../TripDetails/TripDetails';
+import FriendList from '../FriendList/FriendList';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -66,6 +67,12 @@ function App() {
             exact path="/trip"
           >
             <AddTrip />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact path="/friends"
+          >
+            <FriendList />
           </ProtectedRoute>
 
           <ProtectedRoute
