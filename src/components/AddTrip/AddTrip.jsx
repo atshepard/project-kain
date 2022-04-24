@@ -60,18 +60,21 @@ function AddTrip() {
 
   return (
     <div className="container">
+      <div>
         <Input
           type="text"
           name="locationName"
+          variant="outlined"
           value={state.locationName}
           onChange={handleChange}
-          placeholder="Location Name"
+          label="Location Name"
         ></Input>
 
         <Input
           type="text"
           name="latitude"
-          placeholder="Latitude"
+          variant="outlined"
+          label="Latitude"
           value={state.latitude}
           onChange={handleChange}
         ></Input>
@@ -79,7 +82,8 @@ function AddTrip() {
         <Input
           type="text"
           name="longitude"
-          placeholder="Longitude"
+          variant="outlined"
+          label="Longitude"
           value={state.longitude}
           onChange={handleChange}
         ></Input>
@@ -87,7 +91,8 @@ function AddTrip() {
         <Input
           type="date"
           name="startDate"
-          placeholder="Start Date"
+          variant="outlined"
+          label="Start Date"
           value={state.startDate}
           onChange={handleChange}
         ></Input>
@@ -95,10 +100,14 @@ function AddTrip() {
         <Input
           type="date"
           name="endDate"
-          placeholder="End Date"
+          variant="outlined"
+          label="End Date"
           value={state.endDate}
           onChange={handleChange}
         ></Input>
+        </div>
+
+        
 
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>

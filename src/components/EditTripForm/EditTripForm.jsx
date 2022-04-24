@@ -7,9 +7,21 @@ import moment from 'moment';
 
 
 function EditTripForm() {
+  let { id } = useParams(); 
     const dispatch = useDispatch();
     const history = useHistory();
     const editTrip = useSelector((store) => store.editTripReducer);
+    const media = useSelector((store) => store.mediaReducer);
+    const pins = useSelector((store) => store.pinReducer);
+
+    useEffect(() => {;
+        dispatch({ type: 'FETCH_TRIP_MEDIA', payload: id });
+        dispatch({ type: 'FETCH_TRIP_PINS', payload: id })
+    }, []);
+
+    const startDate = moment(editTrip.start_date).format("MMM Do YY");
+    const endDate = moment(editTrip.end_date).format("MMM Do YY");
+
   
     function handleChange(event) {
       dispatch({ 
