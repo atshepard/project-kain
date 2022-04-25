@@ -108,6 +108,13 @@ function EditTripForm() {
           onChange={(event) => handleChange(event)}
         ></Input>
 
+        <br />
+        <TripMap
+        details={editTrip}
+        pins={pins}
+        />
+        <br />
+
         <Button onClick={handleClick}>UPDATE TRIP</Button>
     </div>
     

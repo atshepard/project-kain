@@ -120,9 +120,15 @@ function AddTrip() {
         ></Input>
         </div>
         <br />
+        <TripMap
+        details={state}
+        pins={state.pins}
+        />
+        <br />
         <PinForm
         getPins={getPins}
          />
+        
         <br />
         <UserForm
         friends={friends}
