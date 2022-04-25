@@ -35,11 +35,11 @@ function TripDetails() {
         pins={pins}
         />
         <br />
-        {pins.map((pin) => {
+        {/* {pins.map((pin) => {
             return(<p key={pin.id}>{pin.pin_name}, {pin.pin_desc}, {pin.latitude}, {pin.longitude}</p>)
-        })}
+        })} */}
         <br />
-        <div className="imgContainer">
+        {media && <div className="imgContainer">
             <ImageList cols={2}>
                 {media.map((item) => (
 
@@ -49,7 +49,7 @@ function TripDetails() {
 
                 ))}
             </ImageList>
-        </div>
+        </div>}
         <br/>
     </>)
 }

@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Input } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
+import PinForm from '../PinForm/PinForm';
+import UserForm from '../UserForm/UserForm';
+import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
   const history = useHistory();
+  const friends = useSelector((store) => store.friendReducer);
 
   let [state, setState] = useState({
     locationName: '',
     latitude: '',
     longitude: '',
     startDate: '',
-    endDate: ''
+    endDate: '', 
+    pins: [], 
+    users: [],
   })
-
  
   const handleChange = (event) => {
     let value = event.target.value;
@@ -58,20 +63,31 @@ function AddTrip() {
 
   }
 
+  const getPins = (pins) => {
+    setState({...state, pins: pins});
+  }
+
+  const getUsers = (users) => {
+    setState({...state, users: users})
+  }
+
   return (
     <div className="container">
+      <div>
         <Input
           type="text"
           name="locationName"
+          variant="outlined"
           value={state.locationName}
           onChange={handleChange}
-          placeholder="Location Name"
+          label="Location Name"
         ></Input>
 
         <Input
           type="text"
           name="latitude"
-          placeholder="Latitude"
+          variant="outlined"
+          label="Latitude"
           value={state.latitude}
           onChange={handleChange}
         ></Input>
@@ -79,7 +95,8 @@ function AddTrip() {
         <Input
           type="text"
           name="longitude"
-          placeholder="Longitude"
+          variant="outlined"
+          label="Longitude"
           value={state.longitude}
           onChange={handleChange}
         ></Input>
@@ -87,7 +104,8 @@ function AddTrip() {
         <Input
           type="date"
           name="startDate"
-          placeholder="Start Date"
+          variant="outlined"
+          label="Start Date"
           value={state.startDate}
           onChange={handleChange}
         ></Input>
@@ -95,11 +113,21 @@ function AddTrip() {
         <Input
           type="date"
           name="endDate"
-          placeholder="End Date"
+          variant="outlined"
+          label="End Date"
           value={state.endDate}
           onChange={handleChange}
         ></Input>
-
+        </div>
+        <br />
+        <PinForm
+        getPins={getPins}
+         />
+        <br />
+        <UserForm
+        friends={friends}
+        getUsers={getUsers}
+        />
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>
   );

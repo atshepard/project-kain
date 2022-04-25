@@ -2,7 +2,9 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import tripsReducer from './trips.reducer';
+import allUsersReducer from './allusers.reducer';
 import detailsReducer from './details.reducer';
+import friendReducer from './friend.reducer';
 import editTripReducer from './edit.reducer';
 import mediaReducer from './media.reducer';
 import pinReducer from './pins.reducer';
@@ -20,7 +22,9 @@ const rootReducer = combineReducers({
   detailsReducer, 
   editTripReducer, 
   mediaReducer, 
-  pinReducer
+  pinReducer, 
+  friendReducer, 
+  allUsersReducer
 });
 
 export default rootReducer;
