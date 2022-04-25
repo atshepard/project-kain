@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button, Input } from '@mui/material';
+import PinForm from "../PinForm/PinForm";
 import swal from 'sweetalert';
 import axios from 'axios';
 import moment from 'moment';
@@ -51,6 +52,7 @@ function EditTripForm() {
           .then( response => {
               // clean up reducer data            
               dispatch({ type: 'EDIT_CLEAR' });
+              dispatch({ type: 'ClEAR_PINS'})
               history.push('/user'); // back to list
           })
           .catch(error => {

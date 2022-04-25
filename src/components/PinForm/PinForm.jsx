@@ -1,8 +1,10 @@
-
+import { useDispatch, useSelector } from "react-redux";
+import { Button, Input } from '@mui/material';
 
 
 function PinForm () {
-
+    const dispatch = useDispatch();
+    const pins = useSelector((store) => store.pinReducer);
 
     const handleClick = () => {
 
@@ -10,7 +12,6 @@ function PinForm () {
         //display that pins information 
         //clear input fields
     }
-
 
     return( <>
 

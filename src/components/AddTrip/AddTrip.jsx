@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Input } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
+import PinForm from '../PinForm/PinForm';
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
@@ -106,9 +107,8 @@ function AddTrip() {
           onChange={handleChange}
         ></Input>
         </div>
-
-        
-
+        <br />
+        <PinForm />
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>
   );
