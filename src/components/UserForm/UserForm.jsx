@@ -7,8 +7,8 @@ function UserForm ({friends}) {
       <Autocomplete
         id="free-solo-demo"
         freeSolo
-        options={friends.map((option) => option.title)}
-        renderInput={(params) => <TextField {...params} label="freeSolo" />}
+        options={friends.map((friend) => friend.display_name)}
+        renderInput={(params) => <TextField {...params} label="Add a Friend" />}
       />
     </Stack>
 

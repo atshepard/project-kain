@@ -11,7 +11,7 @@ function UserPage() {
   useEffect(() => {
     // console.log('in use effect');
     dispatch({type: 'FETCH_TRIPS'});
-    dispatch({type: 'SET_MY_FRIENDS'})
+    dispatch({type: 'FETCH_MY_FRIENDS'});
   }, []);
   
   const user = useSelector((store) => store.user);
