@@ -1,17 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Input } from '@mui/material';
+import { Input } from '@mui/material';
 
 
 function PinForm () {
-    const dispatch = useDispatch();
     const pins = useSelector((store) => store.pinReducer);
-
-    const handleClick = () => {
-
-        //will need to add new pin information to an array, 
-        //display that pins information 
-        //clear input fields
-    }
 
     return( <>
 
@@ -20,7 +12,7 @@ function PinForm () {
           name="pinName"
           placeholder="Pin Name"
         ></Input>
-
+        <br />
         <Input
           type="text"
           name="pinDescription"
@@ -28,20 +20,18 @@ function PinForm () {
         //   onChange={(event) => handleChange(event)}
           placeholder="Pin Description"
         ></Input>
-
+        <br />
         <Input
           type="text"
-          name="pinLatitude"
+          name="Pin Latitude"
           placeholder="pinLatitude"
         ></Input>
-
+        <br />
         <Input
           type="text"
           name="pinLongitude"
           placeholder="Pin Longitude"
         ></Input>
-
-        <Button onClick={handleClick}>ADD ANOTHER</Button>
     </>)
 }
 

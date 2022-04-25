@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Input } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
 import PinForm from '../PinForm/PinForm';
+import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
   const history = useHistory();
+  const friends = useSelector((store) => store.friendReducer);
 
   let [state, setState] = useState({
     locationName: '',
     latitude: '',
     longitude: '',
     startDate: '',
-    endDate: ''
+    endDate: '', 
+    pins: [], 
+    users: [],
   })
-
  
   const handleChange = (event) => {
     let value = event.target.value;
@@ -57,6 +60,14 @@ function AddTrip() {
       }
     });
 
+  }
+
+  const getPins = (pins) => {
+    setState({...state, pins: pins});
+  }
+
+  const getUsers = (users) => {
+    setState({...state, users: users})
   }
 
   return (
@@ -108,7 +119,14 @@ function AddTrip() {
         ></Input>
         </div>
         <br />
-        <PinForm />
+        <PinForm
+        getPins={getPins}
+         />
+        <br />
+        <UserForm
+        friends={friends}
+        getUsers={getUsers}
+        />
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>
   );
