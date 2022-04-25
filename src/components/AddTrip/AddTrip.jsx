@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Input } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
+import TripMap from '../TripMap/TripMap';
 import PinForm from '../PinForm/PinForm';
 import UserForm from '../UserForm/UserForm';
 import {useDispatch, useSelector} from 'react-redux'
@@ -13,8 +14,8 @@ function AddTrip() {
 
   let [state, setState] = useState({
     locationName: '',
-    latitude: '',
-    longitude: '',
+    latitude: 40.2645,
+    longitude: -97.425,
     startDate: '',
     endDate: '', 
     pins: [], 
@@ -63,13 +64,13 @@ function AddTrip() {
 
   }
 
-  const getPins = (pins) => {
-    setState({...state, pins: pins});
-  }
+  // const getPins = (pins) => {
+  //   setState({...state, pins: pins});
+  // }
 
-  const getUsers = (users) => {
-    setState({...state, users: users})
-  }
+  // const getUsers = (users) => {
+  //   setState({...state, users: users})
+  // }
 
   return (
     <div className="container">
@@ -126,13 +127,13 @@ function AddTrip() {
         />
         <br />
         <PinForm
-        getPins={getPins}
+        // getPins={getPins}
          />
         
         <br />
         <UserForm
         friends={friends}
-        getUsers={getUsers}
+        // getUsers={getUsers}
         />
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>

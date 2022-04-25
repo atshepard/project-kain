@@ -2,13 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button, Input } from '@mui/material';
 import PinForm from "../PinForm/PinForm";
+import TripMap from "../TripMap/TripMap";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import swal from 'sweetalert';
 import axios from 'axios';
 import moment from 'moment';
 
 
 function EditTripForm() {
-  let { id } = useParams(); 
+    let { id } = useParams(); 
     const dispatch = useDispatch();
     const history = useHistory();
     const editTrip = useSelector((store) => store.editTripReducer);

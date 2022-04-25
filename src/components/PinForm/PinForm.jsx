@@ -3,14 +3,8 @@ import { useState } from "react";
 import { Button, Input } from '@mui/material';
 
 
-function PinForm({ getPins }) {
-    const pins = [];
-    const [pin, setPin] = {
-        pinName: '',
-        pinDescription: '',
-        pinLatitude: '',
-        pinLongitude: '',
-    }
+function PinForm() {
+    const pin = useSelector((store) => store.pinReducer);
 
     const handleChange = (event) => {
         let value = event.target.value;
@@ -21,21 +15,15 @@ function PinForm({ getPins }) {
     }
 
     const handleClick = () => {
-        pins.push(pin);
-        setPin({
-            pinName: '',
-            pinDescription: '',
-            pinLatitude: '',
-            pinLongitude: '',
-        })
+
+        
     }
 
     return (<>
-
         <Input
             type="text"
             name="pinName"
-            value={pin.pinName}
+            value={pin.pin_name}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Name"
         ></Input>
@@ -43,7 +31,7 @@ function PinForm({ getPins }) {
         <Input
             type="text"
             name="pinDescription"
-            value={pin.pinDescription}
+            value={pin.pin_desc}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Description"
         ></Input>
@@ -51,7 +39,7 @@ function PinForm({ getPins }) {
         <Input
             type="text"
             name="pinLatitude"
-            value={pin.pinLatitude}
+            value={pin.latitude}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Latitude"
         ></Input>
@@ -59,7 +47,7 @@ function PinForm({ getPins }) {
         <Input
             type="text"
             name="pinLongitude"
-            value={pin.pinLongitude}
+            value={pin.longitude}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Longitude"
         ></Input>
