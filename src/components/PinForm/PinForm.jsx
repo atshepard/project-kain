@@ -13,15 +13,10 @@ function PinForm() {
         longitude: clickedPin.lng,
     })
 
-    useEffect(() => {
-
-    }, [clickedPin])
-
     const handleChange = (event) => {
-        let value = event.target.value;
         setPin({
             ...pin,
-            [event.target.name]: value
+            [event.target.name]: event.target.value
         })
     }
 
@@ -30,9 +25,8 @@ function PinForm() {
         setPin({
             pin_name: '', 
             pin_desc: '',
-            latitude: 0, 
-            longitude: 0,
         }) 
+        dispatch({type: 'CLEAR_LATLNG'});
     }
 
     return (<>
@@ -55,7 +49,7 @@ function PinForm() {
         <Input
             type="text"
             name="latitude"
-            value={pin.latitude}
+            value={clickedPin.lat}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Latitude"
         ></Input>
@@ -63,7 +57,7 @@ function PinForm() {
         <Input
             type="text"
             name="longitude"
-            value={pin.longitude}
+            value={clickedPin.lng}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Longitude"
         ></Input>
