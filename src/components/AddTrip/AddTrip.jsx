@@ -9,8 +9,15 @@ import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
+
   const history = useHistory();
   const friends = useSelector((store) => store.friendReducer);
+  const pins = useSelector((store) => store.pinsReducer)
+
+  useEffect(() => {
+    // console.log('in use effect');
+  }, [friends, pins]);
+
 
   let [state, setState] = useState({
     locationName: '',
@@ -18,7 +25,7 @@ function AddTrip() {
     longitude: -97.425,
     startDate: '',
     endDate: '', 
-    pins: [], 
+    pins: pins, 
     users: [],
   })
  
@@ -113,10 +120,15 @@ function AddTrip() {
         ></Input>
         </div>
         <br />
+        {state &&
         <TripMap
         details={state}
-        pins={state.pins}
-        />
+        pins={pins}
+        />}
+        <br />
+        {pins && pins.map((pin, i) => {
+          <li key={i}>{pin.name}</li>
+        })}
         <br />
         <PinForm
         // getPins={getPins}

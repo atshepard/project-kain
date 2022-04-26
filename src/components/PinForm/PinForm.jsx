@@ -5,51 +5,60 @@ import { Button, Input } from '@mui/material';
 
 function PinForm() {
     const dispatch = useDispatch();
-    const pins = useSelector((store) => store.pinsReducer);
-
+    const [pin, setPin] = useState({
+        pin_name: '', 
+        pin_desc: '',
+        latitude: 0, 
+        longitude: 0,
+    })
+  
     const handleChange = (event) => {
         let value = event.target.value;
         setPin({
-            ...state,
+            ...pin,
             [event.target.name]: value
         })
     }
 
     const handleClick = () => {
-        //dispatch 'ADD PIN'
-        //dispatch 'CLEAR PIN'
-        
+        dispatch({type: 'ADD_PIN', payload: pin})
+        setPin({
+            pin_name: '', 
+            pin_desc: '',
+            latitude: 0, 
+            longitude: 0,
+        }) 
     }
 
     return (<>
         <Input
             type="text"
-            name="pinName"
-            value={pins.pin_name}
+            name="pin_name"
+            value={pin.pin_name}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Name"
         ></Input>
         <br />
         <Input
             type="text"
-            name="pinDescription"
-            value={pins.pin_desc}
+            name="pin_desc"
+            value={pin.pin_desc}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Description"
         ></Input>
         <br />
         <Input
             type="text"
-            name="pinLatitude"
-            value={pins.latitude}
+            name="latitude"
+            value={pin.latitude}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Latitude"
         ></Input>
         <br />
         <Input
             type="text"
-            name="pinLongitude"
-            value={pins.longitude}
+            name="longitude"
+            value={pin.longitude}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Longitude"
         ></Input>

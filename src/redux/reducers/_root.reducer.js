@@ -8,6 +8,7 @@ import friendReducer from './friend.reducer';
 import editTripReducer from './edit.reducer';
 import mediaReducer from './media.reducer';
 import pinsReducer from './pins.reducer';
+import editPinReducer from './editPin.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   mediaReducer, 
   pinsReducer, 
   friendReducer, 
-  allUsersReducer
+  allUsersReducer,
+  editPinReducer
 });
 
 export default rootReducer;

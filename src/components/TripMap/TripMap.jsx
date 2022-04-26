@@ -28,7 +28,7 @@ function TripMap({ details, pins }) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={8}
+        zoom={10}
       >
         { /* Child components, such as markers, info windows, etc. */}
         {pins && pins.map((pin, i) => {
@@ -44,7 +44,6 @@ function TripMap({ details, pins }) {
         <></>
       </GoogleMap>
     </LoadScript>
-
   )
 }
 
