@@ -9,13 +9,15 @@ import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
-
+  const dispatch = useDispatch();
   const history = useHistory();
   const friends = useSelector((store) => store.friendReducer);
   const pins = useSelector((store) => store.pinsReducer)
 
   useEffect(() => {
     // console.log('in use effect');
+    dispatch({type: 'FETCH_LOC'})
+
   }, [friends, pins]);
 
 

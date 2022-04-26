@@ -4,6 +4,7 @@ const {
 } = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
 const router = express.Router();
+const axios = require('axios');
 
 //gets all trip data for the logged in user: 
 router.get('/', rejectUnauthenticated, (req, res) => {
@@ -149,5 +150,17 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     })
 
 });
+
+router.post('/loc', (req, res) => {
+
+    axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API}`)
+    .then((response) => {
+        res.send(response.data);
+    })
+    .catch((error) => {
+        console.log('error in google maps geoloc post', error);
+        res.sendStatus(500);
+    });
+})
 
 module.exports = router;

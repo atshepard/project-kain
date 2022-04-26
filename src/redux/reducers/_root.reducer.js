@@ -10,6 +10,7 @@ import mediaReducer from './media.reducer';
 import pinsReducer from './pins.reducer';
 import editPinReducer from './editPin.reducer';
 import mapClickReducer from './mapClick.reducer';
+import locReducer from './loc.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -28,7 +29,8 @@ const rootReducer = combineReducers({
   friendReducer, 
   allUsersReducer,
   editPinReducer, 
-  mapClickReducer
+  mapClickReducer, 
+  locReducer
 });
 
 export default rootReducer;
