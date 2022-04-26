@@ -1,4 +1,4 @@
-const pinReducer = (state = [], action) => {
+const pinsReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_PINS':
         return action.payload;
@@ -12,5 +12,5 @@ const pinReducer = (state = [], action) => {
   };
   
 
-  export default pinReducer;
+  export default pinsReducer;
   

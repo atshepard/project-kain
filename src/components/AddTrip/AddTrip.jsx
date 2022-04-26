@@ -64,14 +64,6 @@ function AddTrip() {
 
   }
 
-  // const getPins = (pins) => {
-  //   setState({...state, pins: pins});
-  // }
-
-  // const getUsers = (users) => {
-  //   setState({...state, users: users})
-  // }
-
   return (
     <div className="container">
       <div>

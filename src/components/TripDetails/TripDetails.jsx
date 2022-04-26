@@ -11,7 +11,7 @@ function TripDetails() {
     const dispatch = useDispatch();
     const details = useSelector((store) => store.detailsReducer);
     const media = useSelector((store) => store.mediaReducer);
-    const pins = useSelector((store) => store.pinReducer);
+    const pins = useSelector((store) => store.pinsReducer);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_TRIP_DETAILS', payload: id });

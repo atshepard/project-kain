@@ -4,7 +4,8 @@ import { Button, Input } from '@mui/material';
 
 
 function PinForm() {
-    const pin = useSelector((store) => store.pinReducer);
+    const dispatch = useDispatch();
+    const pins = useSelector((store) => store.pinsReducer);
 
     const handleChange = (event) => {
         let value = event.target.value;
@@ -15,7 +16,8 @@ function PinForm() {
     }
 
     const handleClick = () => {
-
+        //dispatch 'ADD PIN'
+        //dispatch 'CLEAR PIN'
         
     }
 
@@ -23,7 +25,7 @@ function PinForm() {
         <Input
             type="text"
             name="pinName"
-            value={pin.pin_name}
+            value={pins.pin_name}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Name"
         ></Input>
@@ -31,7 +33,7 @@ function PinForm() {
         <Input
             type="text"
             name="pinDescription"
-            value={pin.pin_desc}
+            value={pins.pin_desc}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Description"
         ></Input>
@@ -39,7 +41,7 @@ function PinForm() {
         <Input
             type="text"
             name="pinLatitude"
-            value={pin.latitude}
+            value={pins.latitude}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Latitude"
         ></Input>
@@ -47,7 +49,7 @@ function PinForm() {
         <Input
             type="text"
             name="pinLongitude"
-            value={pin.longitude}
+            value={pins.longitude}
             onChange={(event) => handleChange(event)}
             placeholder="Pin Longitude"
         ></Input>
