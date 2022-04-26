@@ -1,13 +1,13 @@
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function TripMap({ details, pins }) {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // console.log('in use effect');
   }, [details, pins]);
-
 
 
   const containerStyle = {
@@ -32,7 +32,7 @@ function TripMap({ details, pins }) {
         mapContainerStyle={containerStyle}
         center={center}
         zoom={10}
-        onClick={(event) => console.log(event.latLng.toJSON())}
+        onClick={(event) => dispatch({type: 'SET_LATLNG', payload: event.latLng.toJSON()})}
       >
         { /* Child components, such as markers, info windows, etc. */}
         {pins && pins.map((pin, i) => {

@@ -1,17 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Input } from '@mui/material';
 
 
 function PinForm() {
     const dispatch = useDispatch();
+    const clickedPin = useSelector((store) => store.mapClickReducer);
     const [pin, setPin] = useState({
         pin_name: '', 
         pin_desc: '',
-        latitude: 0, 
-        longitude: 0,
+        latitude: clickedPin.lat, 
+        longitude: clickedPin.lng,
     })
-  
+
+    useEffect(() => {
+
+    }, [clickedPin])
+
     const handleChange = (event) => {
         let value = event.target.value;
         setPin({
