@@ -1,37 +1,70 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Input } from '@mui/material';
+import { useState, useEffect } from "react";
+import { Button, Input } from '@mui/material';
 
 
-function PinForm () {
-    const pins = useSelector((store) => store.pinReducer);
+function PinForm() {
+    const dispatch = useDispatch();
+    const clickedPin = useSelector((store) => store.mapClickReducer);
+    const [pin, setPin] = useState({
+        pin_name: '', 
+        pin_desc: '',
+        latitude: clickedPin.lat, 
+        longitude: clickedPin.lng,
+    })
 
-    return( <>
+    const handleChange = (event) => {
+        setPin({
+            ...pin,
+            [event.target.name]: event.target.value
+        })
+    }
 
-       <Input
-          type="text"
-          name="pinName"
-          placeholder="Pin Name"
+    const handleClick = () => {
+        dispatch({type: 'ADD_PIN', payload: pin})
+        setPin({
+            pin_name: '', 
+            pin_desc: '',
+        }) 
+        dispatch({type: 'CLEAR_LATLNG'});
+    }
+
+    return (<>
+        <Input
+            type="text"
+            name="pin_name"
+            value={pin.pin_name}
+            onChange={(event) => handleChange(event)}
+            placeholder="Pin Name"
         ></Input>
         <br />
         <Input
-          type="text"
-          name="pinDescription"
-        //   value={editTrip.location_name}
-        //   onChange={(event) => handleChange(event)}
-          placeholder="Pin Description"
+            type="text"
+            name="pin_desc"
+            value={pin.pin_desc}
+            onChange={(event) => handleChange(event)}
+            placeholder="Pin Description"
         ></Input>
         <br />
         <Input
-          type="text"
-          name="Pin Latitude"
-          placeholder="pinLatitude"
+            type="text"
+            name="latitude"
+            value={clickedPin.lat}
+            onChange={(event) => handleChange(event)}
+            placeholder="Pin Latitude"
         ></Input>
         <br />
         <Input
-          type="text"
-          name="pinLongitude"
-          placeholder="Pin Longitude"
+            type="text"
+            name="longitude"
+            value={clickedPin.lng}
+            onChange={(event) => handleChange(event)}
+            placeholder="Pin Longitude"
         ></Input>
+
+        <Button
+            onClick={handleClick}
+        >Add Another Pin</Button>
     </>)
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import TripItem from '../TripItem/TripItem';
 
 function UserPage() {
@@ -10,10 +10,10 @@ function UserPage() {
   //on page load, render the trips for this specific user: 
   useEffect(() => {
     // console.log('in use effect');
-    dispatch({type: 'FETCH_TRIPS'});
-    dispatch({type: 'FETCH_MY_FRIENDS'});
+    dispatch({ type: 'FETCH_TRIPS' });
+    dispatch({ type: 'FETCH_MY_FRIENDS' });
   }, []);
-  
+
   const user = useSelector((store) => store.user);
   const trips = useSelector((store) => store.tripsReducer);
 
@@ -30,8 +30,8 @@ function UserPage() {
       {trips.map((trip, i) => {
         return (
           <TripItem
-          key={i}
-          trip={trip}
+            key={i}
+            trip={trip}
           />
         )
 

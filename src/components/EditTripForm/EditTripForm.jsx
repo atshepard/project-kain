@@ -2,22 +2,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button, Input } from '@mui/material';
 import PinForm from "../PinForm/PinForm";
+import TripMap from "../TripMap/TripMap";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import swal from 'sweetalert';
 import axios from 'axios';
 import moment from 'moment';
 
 
 function EditTripForm() {
-  let { id } = useParams(); 
+    let { id } = useParams(); 
     const dispatch = useDispatch();
     const history = useHistory();
     const editTrip = useSelector((store) => store.editTripReducer);
     const media = useSelector((store) => store.mediaReducer);
-    const pins = useSelector((store) => store.pinReducer);
+    const pins = useSelector((store) => store.pinsReducer);
 
     useEffect(() => {;
         dispatch({ type: 'FETCH_TRIP_MEDIA', payload: id });
-        dispatch({ type: 'FETCH_TRIP_PINS', payload: id })
+        dispatch({ type: 'FETCH_TRIP_PINS', payload: id });
     }, []);
 
     const startDate = moment(editTrip.start_date).format("MMM Do YY");
@@ -70,7 +73,7 @@ function EditTripForm() {
     <div className="container">
         <Input
           type="text"
-          name="locationName"
+          name="location_name"
           value={editTrip.location_name}
           onChange={(event) => handleChange(event)}
           placeholder="Location Name"
@@ -107,6 +110,13 @@ function EditTripForm() {
           value={moment(editTrip.end_date).format('YYYY-MM-DD')}
           onChange={(event) => handleChange(event)}
         ></Input>
+
+        <br />
+        <TripMap
+        details={editTrip}
+        pins={pins}
+        />
+        <br />
 
         <Button onClick={handleClick}>UPDATE TRIP</Button>
     </div>

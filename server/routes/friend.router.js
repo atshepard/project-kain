@@ -16,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.send(result.rows);
         })
         .catch(error => {
-            console.log('error in pin trip get: ', error);
+            console.log('error in friend user get: ', error);
             res.sendStatus(500);
         })
 
@@ -25,16 +25,18 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 router.get('/mine', rejectUnauthenticated, (req, res) => {
     const queryText =
-    `SELECT "display_name" FROM "user"
+    `SELECT "user".id, "display_name", "profile_image" FROM "user"
     JOIN "friends" ON "friends".user_1_id = $1 
-    OR "friends".user_2_id = $1;`;
+    OR "friends".user_2_id = $1
+    WHERE "friends".user_1_id = "user".id 
+    OR "friends".user_2_id = "user".id ;`;
 
     pool.query(queryText, [req.user.id])
         .then(result => {
             res.send(result.rows);
         })
         .catch(error => {
-            console.log('error in pin trip get: ', error);
+            console.log('error in friend get: ', error);
             res.sendStatus(500);
         })
 
@@ -43,14 +45,13 @@ router.get('/mine', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/:id', rejectUnauthenticated, (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     // POST route code here
 
     const queryText =
-        `INSERT INTO "friends" ("user_1_id", "user_2_id")
-    VALUES ($1, $2);`;
+        `INSERT INTO "friends" ("user_1_id", "user_2_id") VALUES ($1, $2);`;
 
-    pool.query(queryText, [req.user.id, req.params.id])
+    pool.query(queryText, [req.user.id, req.body.id])
         .then(result => {
             res.sendStatus(201);
         })

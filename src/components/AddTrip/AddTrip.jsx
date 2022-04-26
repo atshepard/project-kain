@@ -2,22 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Button, Input } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
+import TripMap from '../TripMap/TripMap';
 import PinForm from '../PinForm/PinForm';
 import UserForm from '../UserForm/UserForm';
 import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
+
   const history = useHistory();
   const friends = useSelector((store) => store.friendReducer);
+  const pins = useSelector((store) => store.pinsReducer)
+
+  useEffect(() => {
+    // console.log('in use effect');
+  }, [friends, pins]);
+
 
   let [state, setState] = useState({
     locationName: '',
-    latitude: '',
-    longitude: '',
+    latitude: 40.2645,
+    longitude: -97.425,
     startDate: '',
     endDate: '', 
-    pins: [], 
+    pins: pins, 
     users: [],
   })
  
@@ -61,14 +69,6 @@ function AddTrip() {
       }
     });
 
-  }
-
-  const getPins = (pins) => {
-    setState({...state, pins: pins});
-  }
-
-  const getUsers = (users) => {
-    setState({...state, users: users})
   }
 
   return (
@@ -120,13 +120,24 @@ function AddTrip() {
         ></Input>
         </div>
         <br />
+        {state &&
+        <TripMap
+        details={state}
+        pins={pins}
+        />}
+        <br />
+        {pins && pins.map((pin, i) => {
+          <li key={i}>{pin.name}</li>
+        })}
+        <br />
         <PinForm
-        getPins={getPins}
+        // getPins={getPins}
          />
+        
         <br />
         <UserForm
         friends={friends}
-        getUsers={getUsers}
+        // getUsers={getUsers}
         />
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>
