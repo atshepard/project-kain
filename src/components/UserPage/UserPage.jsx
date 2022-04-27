@@ -12,6 +12,7 @@ function UserPage() {
     // console.log('in use effect');
     dispatch({ type: 'FETCH_TRIPS' });
     dispatch({ type: 'FETCH_MY_FRIENDS' });
+    dispatch({type: 'FETCH_LOC'});
   }, []);
 
   const user = useSelector((store) => store.user);

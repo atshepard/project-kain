@@ -16,10 +16,8 @@ function AddTrip() {
   const loc = useSelector((store) => store.locReducer)
 
   useEffect(() => {
-    // console.log('in use effect');
-    dispatch({type: 'FETCH_LOC'})
-
-  }, [friends, pins, loc]);
+    // console.log('in use effect')
+  }, [friends, pins]);
 
 
   let [state, setState] = useState({

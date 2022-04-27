@@ -51,8 +51,6 @@ Button
   border-color: #000d00;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #485d4e;
-  color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -74,7 +72,6 @@ Button
 }
 
 .btn:hover {
-  background-color: #203326;
   text-decoration: none;
 }
 
@@ -82,7 +79,6 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
   border-radius: 0;
   background: none;
   font: inherit;
@@ -92,7 +88,6 @@ Button
 .btn_asLink:hover {
   background-color: transparent;
   border-color: #203326;
-  color: #485d4e;
 }
 
 /* --------------------------------------------------------------------------------
@@ -103,10 +98,8 @@ Alert
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
-  border: 2px solid #e01616;
   background-color: #efefef;
   border-radius: 3px;
-  color: #e01616;
   font-size: 0.8rem;
 }
 
@@ -120,7 +113,6 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }

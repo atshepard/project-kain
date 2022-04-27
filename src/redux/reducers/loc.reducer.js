@@ -1,7 +1,7 @@
 const locReducer = (state = {lat:0, lng: 0}, action) => {
     switch (action.type) {
       case 'SET_LOC':
-        return action.payload;
+        return action.payload.location;
       default:
         return state;
     }

@@ -24,8 +24,9 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
-import { createTheme } from '@mui/system';
+import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
+import { dark } from '@mui/material/styles/createPalette';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,7 +35,6 @@ function App() {
 
   const theme = createTheme({
     palette: {
-      type: 'light',
       primary: {
         main: '#283593',
       },
