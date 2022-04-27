@@ -153,14 +153,14 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 router.post('/loc', (req, res) => {
 
-    axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API}`)
-    .then((response) => {
-        res.send(response.data);
-    })
-    .catch((error) => {
-        console.log('error in google maps geoloc post', error);
-        res.sendStatus(500);
-    });
+    // axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API}`)
+    // .then((response) => {
+    //     res.send(response.data);
+    // })
+    // .catch((error) => {
+    //     console.log('error in google maps geoloc post', error);
+    //     res.sendStatus(500);
+    // });
 })
 
 module.exports = router;

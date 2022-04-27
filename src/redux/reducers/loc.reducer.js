@@ -1,4 +1,4 @@
-const locReducer = (state = {}, action) => {
+const locReducer = (state = {lat:0, lng: 0}, action) => {
     switch (action.type) {
       case 'SET_LOC':
         return action.payload;

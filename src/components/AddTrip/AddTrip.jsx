@@ -13,18 +13,19 @@ function AddTrip() {
   const history = useHistory();
   const friends = useSelector((store) => store.friendReducer);
   const pins = useSelector((store) => store.pinsReducer)
+  const loc = useSelector((store) => store.locReducer)
 
   useEffect(() => {
     // console.log('in use effect');
     dispatch({type: 'FETCH_LOC'})
 
-  }, [friends, pins]);
+  }, [friends, pins, loc]);
 
 
   let [state, setState] = useState({
     locationName: '',
-    latitude: 40.2645,
-    longitude: -97.425,
+    latitude: loc.lat,
+    longitude: loc.lng,
     startDate: '',
     endDate: '', 
     pins: pins, 
