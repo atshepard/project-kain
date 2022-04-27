@@ -30,6 +30,7 @@ function PinForm() {
     }
 
     return (<>
+    <div className="container">
         <Input
             type="text"
             name="pin_name"
@@ -65,6 +66,7 @@ function PinForm() {
         <Button
             onClick={handleClick}
         >Add Another Pin</Button>
+    </div>
     </>)
 }
 
