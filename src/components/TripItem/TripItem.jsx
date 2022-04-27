@@ -56,19 +56,18 @@ function TripItem({ trip }) {
 
     return (<>
     <div className="cardContainer">
-        <Card>
+        <Card style={{backgroundColor: '#dddddd'}}>
             <CardActionArea
                 onClick={tripDetails}
             >
                 <CardHeader title={trip.location_name} />
 
                 <CardContent>
-                    <p>{trip.latitude}, {trip.longitude}</p>
                     <p>{startDate} - {endDate}</p>
                 </CardContent>
                 </CardActionArea>
             <CardActions>
-            <Button variant="outlined" color="success" startIcon={<Edit />} onClick={handleEdit}>
+            <Button variant="outlined" color="info" startIcon={<Edit />} onClick={handleEdit}>
                 EDIT
             </Button>
 

@@ -1,5 +1,7 @@
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {TextField, Stack, Autocomplete, Avatar} from '@mui/material';
+
 
 function FriendList () {
     const dispatch = useDispatch();
@@ -14,19 +16,32 @@ function FriendList () {
 
 
  return(<>
-    <p>All people:</p>
-    <ul>
-        {people.map((people, i) => {
-            return(<li key={i}>{people.display_name}</li>)
-        })}
-    </ul>
+    <p>Find a Friend:</p>
+    <div className="container">
+    <Stack spacing={2} sx={{ width: 300 }}>
+      <Autocomplete
+        id="people list"
+        freeSolo
+        options={people.map((person) => person.display_name)}
+        renderInput={(params) => <TextField {...params} label="Add a Friend" />}
+      />
+    </Stack>
+    </div>
+    
     <br />
-    <p>My people:</p>
-    <ul>
+    <p>Your contacts:</p>
+    
+    {friends && 
+        <Stack direction="row" spacing={2}>
         {friends.map((friend, i) => {
-            return(<li key={i}>{friend.display_name}</li>)
-        })}
-    </ul>
+                return(
+                    <Avatar key={i} alt={friend.display_name} src={friend.profile_image} />
+                )
+            })}
+        </Stack>
+    }
+        
+
  </>)   
 }
 
