@@ -33,32 +33,32 @@ function App() {
 
   const user = useSelector(store => store.user);
 
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#283593',
-      },
-      secondary: {
-        main: '#43a047',
-      },
-      success: {
-        main: '#c3ecb2',
-      },
-      warning: {
-        main: '#ad1457',
-      },
-      info: {
-        main: '#f4511e',
-      },
-    },
-  })
+  // const theme = createTheme({
+  //   palette: {
+  //     primary: {
+  //       main: '#283593',
+  //     },
+  //     secondary: {
+  //       main: '#43a047',
+  //     },
+  //     success: {
+  //       main: '#c3ecb2',
+  //     },
+  //     warning: {
+  //       main: '#ad1457',
+  //     },
+  //     info: {
+  //       main: '#f4511e',
+  //     },
+  //   },
+  // })
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
       <Router>
         <div>
           <Nav />
@@ -163,7 +163,7 @@ function App() {
           <Footer />
         </div>
       </Router>
-    </ThemeProvider>
+    // </ThemeProvider>
   );
 }
 
