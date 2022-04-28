@@ -56,7 +56,7 @@ function TripItem({ trip }) {
 
     return (<>
     <div className="cardContainer">
-        <Card style={{backgroundColor: '#dddddd'}}>
+        <Card style={{backgroundColor: '#ababab'}}>
             <CardActionArea
                 onClick={tripDetails}
             >

@@ -2,7 +2,7 @@ html,
 body,
 #react-root {
   height: 100%;
-  background-color: #f1f7ed;
+  background-color: #dddddd;
 }
 
 body {
@@ -49,9 +49,11 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #000d00;
+  border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
+  background-color: #00acb0;
+  color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -73,6 +75,7 @@ Button
 }
 
 .btn:hover {
+  background-color: #008183;
   text-decoration: none;
 }
 
@@ -80,6 +83,7 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
+  border-bottom: 1px solid #444;
   border-radius: 0;
   background: none;
   font: inherit;
@@ -88,7 +92,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #203326;
+  border-color: #008183;
+  color: #008183;
 }
 
 /* --------------------------------------------------------------------------------

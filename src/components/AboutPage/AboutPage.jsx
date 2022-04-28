@@ -24,6 +24,32 @@ function AboutPage() {
                     </ImageListItem>
 
             </ImageList>
+
+      <div>
+        <br />
+        <h3>Project KAIN was built using a wide array of technologies: </h3>
+        <img src={`/images/used.png`}></img>
+        <br />
+        <p>Deployment: </p>
+        <ul>
+          <li>Heroku</li>
+        </ul>
+        <p>Styling: </p>
+        <ul>
+          <li>Material UI</li>
+        </ul>
+        <p>Functionality: </p>
+        <ul>
+          <li>Javascript</li>
+          <li>React</li>
+          <li>Redux</li>
+          <li>Redux-Saga</li>
+          <li>HTML5</li>
+          <li>NodeJS</li>
+          <li>ExpressJS</li>
+          <li>PostgreSQL</li>
+        </ul>
+      </div>
     </div>
   );
 }
