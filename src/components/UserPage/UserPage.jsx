@@ -7,7 +7,7 @@ import TripItem from '../TripItem/TripItem';
 function UserPage() {
   const dispatch = useDispatch();
 
-  //on page load, render the trips for this specific user: 
+  //on page load, get the trips, friends and location for this specific user: 
   useEffect(() => {
     // console.log('in use effect');
     dispatch({ type: 'FETCH_TRIPS' });
@@ -25,7 +25,6 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.display_name}!</h2>
-      <p>A list of your trips will render here:</p>
       {/* trips.map to generate Trip component */}
 
       {trips.map((trip, i) => {
