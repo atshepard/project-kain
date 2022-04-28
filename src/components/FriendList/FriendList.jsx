@@ -9,6 +9,7 @@ function FriendList() {
 
     const people = useSelector((store) => store.allUsersReducer);
     const friends = useSelector((store) => store.friendReducer);
+    const user = useSelector(store => store.user);
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -17,13 +18,14 @@ function FriendList() {
     }, []);
 
     const addFriend = () => {
-        console.log(value);
-        //axios.post(`/api/friend`, {})
+        // console.log(value);
+        const result = people.filter(person => person.display_name == value)
+        // console.log(result[0]);
+        dispatch({type: 'ADD_FRIEND', payload: result[0]})
     }
 
 
     return (<>
-        <p>Find a Friend:</p>
         <div className="container">
             <Stack spacing={2} sx={{ width: '50vw' }}>
                 <Autocomplete
@@ -41,10 +43,11 @@ function FriendList() {
         </div>
 
         <br />
-        <p>Your Friends:</p>
+        <h3>Your Friends:</h3>
         {friends &&
             // <Stack direction="row" spacing={2}>
                 friends.map((friend, i) => {
+                    if (friend.id !== user.id) {
                     return (
                         <div key={i} className="cardContainer">
                             <Box display="flex" alignItems="center" justifyContent="center">
@@ -57,6 +60,7 @@ function FriendList() {
                             </Box>
                         </div>
                     )
+                    }
                 })}
             {/* </Stack> */}
         
