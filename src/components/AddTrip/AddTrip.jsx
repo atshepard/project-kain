@@ -17,7 +17,7 @@ function AddTrip() {
 
   useEffect(() => {
     // console.log('in use effect')
-  }, [friends, pins]);
+  }, []);
 
 
   let [state, setState] = useState({
