@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Input } from '@mui/material';
+import { Button, Input, Card, CardContent, CardHeader } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
 import TripMap from '../TripMap/TripMap';
@@ -134,17 +134,21 @@ function AddTrip() {
         />}
         <br />
         {pins && pins.map((pin, i) => {
-          <li key={i}>{pin.name}</li>
+            <div classNAme="cardContainer">
+                <Card key={i}>
+                    <CardHeader title={pin.pin_name} />
+                    <CardContent>
+                        <p>{pin.pin_desc}</p>
+                    </CardContent>
+                </Card>
+            </div>
         })}
         <br />
         <PinForm
-        // getPins={getPins}
          />
-        
         <br />
         <UserForm
         friends={friends}
-        // getUsers={getUsers}
         />
         <br />
         <Button onClick={handleClick}>ADD TRIP</Button>

@@ -1,21 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { Button, Input, Card, CardHeader, CardContent } from '@mui/material';
-import { Delete, Edit } from '@mui/icons-material';
+import { Button, Input, } from '@mui/material';
+
 
 
 function PinForm() {
     const dispatch = useDispatch();
     const clickedPin = useSelector((store) => store.mapClickReducer);
-    const pins = useSelector((store) => store.pinReducer);
     const [pin, setPin] = useState({
         pin_name: '',
         pin_desc: '',
         latitude: clickedPin.lat,
         longitude: clickedPin.lng,
     })
-
-    useEffect(() => { }, [pins]);
 
     const handleChange = (event) => {
         setPin({
@@ -34,16 +31,6 @@ function PinForm() {
     }
 
     return (<>
-        {pins && pins.map((pin, i) => {
-            <div classNAme="cardContainer">
-                <Card key={i}>
-                    <CardHeader title={pin.pin_name} />
-                    <CardContent>
-                        <p>{pin.pin_desc}</p>
-                    </CardContent>
-                </Card>
-            </div>
-        })}
         <br />
         <div className="container">
             <Input
