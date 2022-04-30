@@ -11,13 +11,15 @@ import {useHistory} from 'react-router-dom'
 function AddTrip() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const friends = useSelector((store) => store.friendReducer);
-  const pins = useSelector((store) => store.pinsReducer)
-  const loc = useSelector((store) => store.locReducer)
+  const user = useSelector((store) => store.user);
+  const friends = useSelector((store) => store.friendReducer).filter(friend => friend.id != user.id);
+  const tripFriends = useSelector((store) => store.tripFriendReducer);
+  const pins = useSelector((store) => store.pinsReducer);
+  const loc = useSelector((store) => store.locReducer);
 
   useEffect(() => {
     // console.log('in use effect')
-    dispatch({type: 'CLEAR_PINS'})
+    dispatch({type: 'CLEAR_PINS'});
   }, []);
 
 
@@ -28,7 +30,7 @@ function AddTrip() {
     startDate: '',
     endDate: '', 
     pins: pins, 
-    users: [],
+    users: tripFriends,
   })
  
   const handleChange = (event) => {
@@ -144,6 +146,7 @@ function AddTrip() {
         friends={friends}
         // getUsers={getUsers}
         />
+        <br />
         <Button onClick={handleClick}>ADD TRIP</Button>
     </div>
   );

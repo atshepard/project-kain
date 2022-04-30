@@ -1,8 +1,10 @@
 import {InputLabel, Select, OutlinedInput, Box, Chip, MenuItem, Button} from '@mui/material';
-import {useState} from 'react'
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 function UserForm ({friends}) {
 
+  const dispatch = useDispatch();
   const [personName, setPersonName] = useState([]);
 
   const handleChange = (event) => {
@@ -16,12 +18,13 @@ function UserForm ({friends}) {
   };
 
   const handleSubmit = () => {
-
+    dispatch({type: 'SET_TRIP_FRIENDS', payload: personName});
+    setPersonName([]);
   }
 
     return (<>
     <div className="container">
-    <InputLabel id="demo-multiple-chip-label">Chip</InputLabel>
+    <InputLabel id="demo-multiple-chip-label">Add Travel Companions:</InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"
@@ -47,7 +50,7 @@ function UserForm ({friends}) {
           ))}
         </Select>
     </div>
-    <Button onClick={handleSubmit}>ADD FRIEND</Button>
+    <Button onClick={handleSubmit}>ADD FRIENDS</Button>
         </>)
 }
 

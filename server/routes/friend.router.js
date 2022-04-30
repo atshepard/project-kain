@@ -29,7 +29,7 @@ router.get('/mine', rejectUnauthenticated, (req, res) => {
     JOIN "friends" ON "friends".user_1_id = $1 
     OR "friends".user_2_id = $1
     WHERE "friends".user_1_id = "user".id 
-    OR "friends".user_2_id = "user".id ;`;
+    OR "friends".user_2_id = "user".id;`;
 
     pool.query(queryText, [req.user.id])
         .then(result => {
@@ -39,7 +39,6 @@ router.get('/mine', rejectUnauthenticated, (req, res) => {
             console.log('error in friend get: ', error);
             res.sendStatus(500);
         })
-
 });
 
 /**
