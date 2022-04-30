@@ -1,8 +1,9 @@
-import {InputLabel, Select, OutlinedInput, Box, Chip, MenuItem} from '@mui/material';
+import {InputLabel, Select, OutlinedInput, Box, Chip, MenuItem, Button} from '@mui/material';
+import {useState} from 'react'
 
 function UserForm ({friends}) {
 
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = useState([]);
 
   const handleChange = (event) => {
     const {
@@ -13,6 +14,10 @@ function UserForm ({friends}) {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
+
+  const handleSubmit = () => {
+
+  }
 
     return (<>
     <div className="container">
@@ -31,7 +36,6 @@ function UserForm ({friends}) {
               ))}
             </Box>
           )}
-          MenuProps={MenuProps}
         >
           {friends.map((friend) => (
             <MenuItem
@@ -43,6 +47,7 @@ function UserForm ({friends}) {
           ))}
         </Select>
     </div>
+    <Button onClick={handleSubmit}>ADD FRIEND</Button>
         </>)
 }
 

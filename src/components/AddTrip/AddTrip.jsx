@@ -17,6 +17,7 @@ function AddTrip() {
 
   useEffect(() => {
     // console.log('in use effect')
+    dispatch({type: 'CLEAR_PINS'})
   }, []);
 
 
@@ -61,6 +62,9 @@ function AddTrip() {
             startDate: '',
             endDate: ''
           })
+
+          dispatch({type: 'CLEAR_PINS'});
+
           history.push('/user');
         }).catch(error => {
           swal('Something went wrong! Please close and try again!')
