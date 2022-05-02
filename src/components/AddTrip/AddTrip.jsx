@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Input, Card, CardContent, CardHeader } from '@mui/material';
+import { Box, Button, InputLabel, Card, CardContent, CardHeader, TextField } from '@mui/material';
 import swal from 'sweetalert';
 import axios from 'axios';
 import TripMap from '../TripMap/TripMap';
 import PinForm from '../PinForm/PinForm';
-import UserForm from '../UserForm/UserForm';
 import {useDispatch, useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 
 function AddTrip() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((store) => store.user);
-  const friends = useSelector((store) => store.friendReducer).filter(friend => friend.id != user.id);
-  const tripFriends = useSelector((store) => store.tripFriendReducer);
-  const pins = useSelector((store) => store.pinsReducer);
+  const pins = useSelector((store) => store.newPinsReducer);
   const loc = useSelector((store) => store.locReducer);
 
   useEffect(() => {
@@ -30,7 +26,6 @@ function AddTrip() {
     startDate: '',
     endDate: '', 
     pins: pins, 
-    users: tripFriends,
   })
  
   const handleChange = (event) => {
@@ -42,19 +37,6 @@ function AddTrip() {
 
   const handleClick = () => {
     // console.log(state)
-    swal({
-      title: "Is this correct?",
-      text: `Your trip to: ${state.locationName} from ${state.startDate} to ${state.endDate}?`,
-      icon: "info",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willSubmit) => {
-      if (willSubmit) {
-        swal("Your trip has been saved!", {
-          icon: "success",
-        });
-
         axios.post(`/api/trip`, {state})
         .then(() => {
           setState({
@@ -64,67 +46,62 @@ function AddTrip() {
             startDate: '',
             endDate: ''
           })
-
-          dispatch({type: 'CLEAR_PINS'});
-
+          // dispatch({type: 'CLEAR_PINS'});
           history.push('/user');
-        }).catch(error => {
-          swal('Something went wrong! Please close and try again!')
-        })
-      } else {
-        swal("Your trip has not been saved.");
-      }
-    });
-
+        });
   }
 
   return (
     <div className="container">
       <div>
-        <Input
+        <Box sx={{ p: 2, m:1, border: '1px grey' }} display="flex">
+        <TextField
           type="text"
           name="locationName"
           variant="outlined"
           value={state.locationName}
           onChange={handleChange}
           label="Location Name"
-        ></Input>
+        ></TextField>
 
-        <Input
+        <TextField
           type="text"
           name="latitude"
           variant="outlined"
           label="Latitude"
           value={state.latitude}
           onChange={handleChange}
-        ></Input>
+        ></TextField>
 
-        <Input
+        <TextField
           type="text"
           name="longitude"
           variant="outlined"
           label="Longitude"
           value={state.longitude}
           onChange={handleChange}
-        ></Input>
+        ></TextField>
 
-        <Input
+        <TextField
           type="date"
           name="startDate"
           variant="outlined"
           label="Start Date"
+          InputLabelProps={{shrink: true}}
           value={state.startDate}
           onChange={handleChange}
-        ></Input>
+        ></TextField>
 
-        <Input
+        <TextField
           type="date"
           name="endDate"
           variant="outlined"
+          InputLabelProps={{shrink: true}}
           label="End Date"
           value={state.endDate}
           onChange={handleChange}
-        ></Input>
+        ></TextField>
+        </Box>
         </div>
         <br />
         {state &&
@@ -147,11 +124,16 @@ function AddTrip() {
         <PinForm
          />
         <br />
-        <UserForm
+        {/* <UserForm
         friends={friends}
-        />
-        <br />
-        <Button onClick={handleClick}>ADD TRIP</Button>
+        /> */}
+        {/* <Box  sx={{ p: 2, m:1, border: '1px grey' }} display="flex">
+        <TextField name="media" onChange={handleChange} value={state.media.title} id="outlined-basic" label="Media Title" variant="outlined" />
+        <TextField name="media" onChange={handleChange} value={state.media.link} id="outlined-basic" label="Media Link" variant="outlined" />
+        <br /> */}
+        <Button onClick={handleClick} variant="contained" >ADD TRIP</Button>
+        
+        
     </div>
   );
 }

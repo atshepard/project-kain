@@ -137,32 +137,36 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
       pool.query(queryText, [req.user.id, newTripID])
         .then(result => {
-          // res.sendStatus(201);
-          trip.pins.map(pin => {
-              const queryText =
-                `INSERT INTO "pin" ("pin_name", "pin_desc", "latitude", "longitude", "trip_id")
-                 VALUES ($2, $3, $4, $5, $1);`;
-              const queryValues = [pin.pin_name, pin.pin_desc, pin.latitude, pin.longitude, newTripID]
 
-             pool.query(queryText, queryValues)
-            .then( result => {
-              res.sendStatus(201);
-            })
-            .catch(error => {
-              console.log('error in mapping through users to post to user_trip: ', error, user);
-              res.sendStatus(500);
-            })
-          })
-            })
-            .catch(error => {
-              console.log('error in user trip post: ', error);
-              res.sendStatus(500);
-            })
+          const queryText=`
+          INSERT INTO "pin" 
+          ("pin_name", "pin_desc", "latitude", "longitude", "trip_id")
+          VALUES ($2, $3, $4, $5, $1);`;
+      
+            const queryValues = [newTripID, trip.pins[0].pin_name, trip.pins[0].pin_desc, Number(trip.pins[0].latitude), Number(trip.pins[0].longitude)]
+            pool.query(queryText, queryValues).then(result => {res.sendStatus(201)});
+
         })
         .catch(error => {
-          console.log('error in  trip post: ', error);
+          console.log('error in trip post: ', error);
           res.sendStatus(500);
         })
     });
+  })
+
+
+//   trip.pins.map(pin => {
+//     const queryText =
+//       `INSERT INTO "pin" ("pin_name", "pin_desc", "latitude", "longitude", "trip_id")
+//        VALUES ($2, $3, $4, $5, $1);`;
+//     const queryValues = [newTripID, pin.pin_name, pin.pin_desc, Number(pin.latitude), Number(pin.longitude)]
+
+//    pool.query(queryText, queryValues)
+// })
+//   })
+//   .catch(error => {
+//     console.log('error in user trip post: ', error);
+//     res.sendStatus(500);
+//   })
 
   module.exports = router;

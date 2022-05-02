@@ -12,6 +12,7 @@ import editPinReducer from './editPin.reducer';
 import mapClickReducer from './mapClick.reducer';
 import locReducer from './loc.reducer';
 import tripFriendReducer from './tripFriend.reducer';
+import newPinsReducer from './newPins.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -32,7 +33,8 @@ const rootReducer = combineReducers({
   editPinReducer, 
   mapClickReducer, 
   locReducer, 
-  tripFriendReducer
+  tripFriendReducer, 
+  newPinsReducer
 });
 
 export default rootReducer;

@@ -1,4 +1,5 @@
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { Box } from '@mui/material'
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -25,6 +26,7 @@ function TripMap({ details, pins }) {
   }
 
   return (
+    <Box sx={{ p: 2, border: '1px grey' }} display="flex">
     <LoadScript
       googleMapsApiKey={process.env.REACT_APP_GOOGLE_API}
     >
@@ -40,6 +42,7 @@ function TripMap({ details, pins }) {
           return (
             <Marker
               onLoad={onLoad}
+              key={i}
               position={{ lat: Number(pin.latitude), lng: Number(pin.longitude) }}
             />)
         })}
@@ -47,6 +50,7 @@ function TripMap({ details, pins }) {
         <></>
       </GoogleMap>
     </LoadScript>
+    </Box>
   )
 }
 
