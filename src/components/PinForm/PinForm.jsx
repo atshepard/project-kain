@@ -1,15 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { Button, Input } from '@mui/material';
+import { useState } from "react";
+import { Button, TextField, Box} from '@mui/material';
+
 
 
 function PinForm() {
     const dispatch = useDispatch();
     const clickedPin = useSelector((store) => store.mapClickReducer);
     const [pin, setPin] = useState({
-        pin_name: '', 
+        pin_name: '',
         pin_desc: '',
-        latitude: clickedPin.lat, 
+        latitude: clickedPin.lat,
         longitude: clickedPin.lng,
     })
 
@@ -21,52 +22,58 @@ function PinForm() {
     }
 
     const handleClick = () => {
-        dispatch({type: 'ADD_PIN', payload: pin})
+        dispatch({ type: 'ADD_PIN', payload: pin })
         setPin({
-            pin_name: '', 
+            pin_name: '',
             pin_desc: '',
-        }) 
-        dispatch({type: 'CLEAR_LATLNG'});
+        })
+        dispatch({ type: 'CLEAR_LATLNG' });
     }
 
     return (<>
-    <div className="container">
-        <Input
-            type="text"
-            name="pin_name"
-            value={pin.pin_name}
-            onChange={(event) => handleChange(event)}
-            placeholder="Pin Name"
-        ></Input>
         <br />
-        <Input
-            type="text"
-            name="pin_desc"
-            value={pin.pin_desc}
-            onChange={(event) => handleChange(event)}
-            placeholder="Pin Description"
-        ></Input>
-        <br />
-        <Input
-            type="text"
-            name="latitude"
-            value={clickedPin.lat}
-            onChange={(event) => handleChange(event)}
-            placeholder="Pin Latitude"
-        ></Input>
-        <br />
-        <Input
-            type="text"
-            name="longitude"
-            value={clickedPin.lng}
-            onChange={(event) => handleChange(event)}
-            placeholder="Pin Longitude"
-        ></Input>
+        <Box sx={{ p: 2, border: '1px grey' }} display="flex">
+            <TextField
+                type="text"
+                name="pin_name"
+                label="Pin Name"
+                variant="outlined"
+                value={pin.pin_name}
+                onChange={(event) => handleChange(event)}
+            ></TextField>
+            <br />
+            <TextField
+                type="text"
+                name="pin_desc"
+                variant="outlined"
+                value={pin.pin_desc}
+                onChange={(event) => handleChange(event)}
+                label="Pin Description"
+            ></TextField>
+            <br />
+            <TextField
+                type="text"
+                variant="outlined"
+                name="latitude"
+                value={clickedPin.lat}
+                onChange={(event) => handleChange(event)}
+                label="Pin Latitude"
+            ></TextField>
+            <br />
+            <TextField
+                type="text"
+                variant="outlined"
+                name="longitude"
+                value={clickedPin.lng}
+                onChange={(event) => handleChange(event)}
+                label="Pin Longitude"
+            ></TextField>
 
-        <Button
-            onClick={handleClick}
-        >Add Another Pin</Button>
-    </div>
+            <Button
+                variant="contained"
+                onClick={handleClick}
+            >Add</Button>
+            </Box>
     </>)
 }
 

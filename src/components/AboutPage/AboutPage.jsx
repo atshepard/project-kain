@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageList, ImageListItem } from "@mui/material";
+import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -11,20 +11,19 @@ function AboutPage() {
     <div className="container">
       <div>
         <h3>Project KAIN is a community building app for people who live nomadic lifestyles.</h3>
-        <p>KAIN was built to make life easier for the beautiful people at Average Wanderers: 
+        <p>KAIN was built to make life easier for the beautiful people at Average Wanderers:
           allowing them to stay safe and connected with their community while on the road.</p>
       </div>
-      <ImageList cols={2}>
-
-                    <ImageListItem key={1}>
-                        <img height="75vh" width="75vw" sx={{ m: 2}} src={`/images/kain.jpeg`} />
-                    </ImageListItem>
-                    <ImageListItem key={2}>
-                        <img height="75vh" width="75vw" sx={{ m: 2}} src={`/images/bryce&jen.jpeg`} />
-                    </ImageListItem>
-
-            </ImageList>
-
+      <ImageList cols={2} rowHeight={350}>
+        <ImageListItem key={1}>
+          <img sx={{ m: 2 }} src={`/images/kain.jpeg`} />
+          <ImageListItemBar title="Kain, the best boy" subtitle="@kain_agoodboy" />
+        </ImageListItem>
+        <ImageListItem key={2}>
+          <img sx={{ m: 2 }} src={`/images/bryce&jen.jpeg`} />
+          <ImageListItemBar title="Bryce & Jen, the best people" subtitle="@average_wanderers" />
+        </ImageListItem>
+      </ImageList>
       <div>
         <br />
         <h3>Project KAIN was built using a wide array of technologies: </h3>

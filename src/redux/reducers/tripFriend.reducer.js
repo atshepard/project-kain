@@ -1,8 +1,8 @@
-const friendReducer = (state = [], action) => {
+const tripFriendReducer = (state = [], action) => {
     switch (action.type) {
-      case 'SET_MY_FRIENDS':
+      case 'SET_TRIP_FRIENDS':
         return action.payload;
-      case 'CLEAR_MY_FRIENDS':
+      case 'CLEAR_TRIP_FRIENDS':
         return [];
       default:
         return state;
@@ -11,5 +11,5 @@ const friendReducer = (state = [], action) => {
   
   // trip will be on the redux state at:
   // state.trip
-  export default friendReducer;
+  export default tripFriendReducer;
   
