@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { Button, Input, } from '@mui/material';
+import { Button, TextField, Box} from '@mui/material';
 
 
 
@@ -32,43 +32,48 @@ function PinForm() {
 
     return (<>
         <br />
-        <div className="container">
-            <Input
+        <Box sx={{ p: 2, border: '1px grey' }} display="flex">
+            <TextField
                 type="text"
                 name="pin_name"
+                label="Pin Name"
+                variant="outlined"
                 value={pin.pin_name}
                 onChange={(event) => handleChange(event)}
-                placeholder="Pin Name"
-            ></Input>
+            ></TextField>
             <br />
-            <Input
+            <TextField
                 type="text"
                 name="pin_desc"
+                variant="outlined"
                 value={pin.pin_desc}
                 onChange={(event) => handleChange(event)}
-                placeholder="Pin Description"
-            ></Input>
+                label="Pin Description"
+            ></TextField>
             <br />
-            <Input
+            <TextField
                 type="text"
+                variant="outlined"
                 name="latitude"
                 value={clickedPin.lat}
                 onChange={(event) => handleChange(event)}
-                placeholder="Pin Latitude"
-            ></Input>
+                label="Pin Latitude"
+            ></TextField>
             <br />
-            <Input
+            <TextField
                 type="text"
+                variant="outlined"
                 name="longitude"
                 value={clickedPin.lng}
                 onChange={(event) => handleChange(event)}
-                placeholder="Pin Longitude"
-            ></Input>
+                label="Pin Longitude"
+            ></TextField>
 
             <Button
+                variant="contained"
                 onClick={handleClick}
-            >Add Another Pin</Button>
-        </div>
+            >Add</Button>
+            </Box>
     </>)
 }
 

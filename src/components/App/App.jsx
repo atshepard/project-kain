@@ -26,39 +26,29 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@emotion/react';
-import { dark } from '@mui/material/styles/createPalette';
 
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
 
-  // const theme = createTheme({
-  //   palette: {
-  //     primary: {
-  //       main: '#283593',
-  //     },
-  //     secondary: {
-  //       main: '#43a047',
-  //     },
-  //     success: {
-  //       main: '#c3ecb2',
-  //     },
-  //     warning: {
-  //       main: '#ad1457',
-  //     },
-  //     info: {
-  //       main: '#f4511e',
-  //     },
-  //   },
-  // })
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#008183',
+      },
+      info: {
+        main: '#008183',
+      },
+    },
+  })
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, []);
 
   return (
-    // <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <Router>
         <div>
           <Nav />
@@ -163,7 +153,7 @@ function App() {
           <Footer />
         </div>
       </Router>
-    // </ThemeProvider>
+    </ThemeProvider>
   );
 }
 
