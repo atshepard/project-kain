@@ -134,7 +134,7 @@ function AddTrip() {
         />}
         <br />
         {pins && pins.map((pin, i) => {
-            <div classNAme="cardContainer">
+            <div className="cardContainer">
                 <Card key={i}>
                     <CardHeader title={pin.pin_name} />
                     <CardContent>

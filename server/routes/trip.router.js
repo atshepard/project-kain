@@ -137,30 +137,32 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
       pool.query(queryText, [req.user.id, newTripID])
         .then(result => {
-          res.sendStatus(201);
+          // res.sendStatus(201);
+          trip.pins.map(pin => {
+              const queryText =
+                `INSERT INTO "pin" ("pin_name", "pin_desc", "latitude", "longitude", "trip_id")
+                 VALUES ($2, $3, $4, $5, $1);`;
+              const queryValues = [pin.pin_name, pin.pin_desc, pin.latitude, pin.longitude, newTripID]
+
+             pool.query(queryText, queryValues)
+            .then( result => {
+              res.sendStatus(201);
+            })
+            .catch(error => {
+              console.log('error in mapping through users to post to user_trip: ', error, user);
+              res.sendStatus(500);
+            })
+          })
+            })
+            .catch(error => {
+              console.log('error in user trip post: ', error);
+              res.sendStatus(500);
+            })
         })
         .catch(error => {
-          console.log('error in user trip post: ', error);
+          console.log('error in  trip post: ', error);
           res.sendStatus(500);
         })
-    })
-    .catch(error => {
-      console.log('error in  trip post: ', error);
-      res.sendStatus(500);
-    })
+    });
 
-});
-
-router.post('/loc', (req, res) => {
-
-    // axios.post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.REACT_APP_GOOGLE_API}`)
-    // .then((response) => {
-    //     res.send(response.data);
-    // })
-    // .catch((error) => {
-    //     console.log('error in google maps geoloc post', error);
-    //     res.sendStatus(500);
-    // });
-})
-
-module.exports = router;
+  module.exports = router;
