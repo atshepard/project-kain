@@ -38,7 +38,7 @@ When you have your key, it can be added to a .env file at the root of the reposi
 
 ### Installation
 
-Create a database named project_kain.
+Create a database named "project_kain".
  
 The queries in the database.sql file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. 
 
@@ -72,4 +72,4 @@ Thank you to the fine folks at @react-google-maps/api for providing an easy-to-u
 
 ## Contacts
 
-<a href="https://www.linkedin.com/in/atshepard"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>  <a href="mailto:"><img src=https://raw.githubusercontent.com/johnturner4004/readme-generator/master/src/components/assets/images/email_me_button_icon_151852.svg /></a>
+<a href="https://www.linkedin.com/in/atshepard"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a> 

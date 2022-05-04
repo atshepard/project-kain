@@ -121,9 +121,9 @@ function AddTrip() {
             </div>
         })}
         <br />
-        <PinForm
+        {/* <PinForm
          />
-        <br />
+        <br /> */}
         {/* <UserForm
         friends={friends}
         /> */}
